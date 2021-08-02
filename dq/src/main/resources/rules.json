@@ -1,0 +1,29 @@
+{
+  "source": {
+    "name": "movies",
+    "type": "csv",
+    "fileLocation": "C:\\Users\\suskumar9\\Documents\\projects\\data-quality\\src\\main\\resources\\person.csv",
+    "delimiter": ",",
+    "firstRowHeader": true
+  },
+  "validation": {
+    "rules": [
+      {
+        "id": "QA101",
+        "name": "Adult",
+        "expr": "${age} >= 18",
+        "type": "error"
+      },
+      {
+        "id": "QA102",
+        "name": "Name constraint",
+        "expr": "${name}.substring(6,30).startsWith(\"S\")",
+        "type": "warn"
+      }
+    ]
+  },
+  "sink": {
+    "type": "debug",
+    "sample": 10
+  }
+}
